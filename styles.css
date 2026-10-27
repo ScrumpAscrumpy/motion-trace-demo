@@ -17,6 +17,10 @@ button, input, select { font: inherit; }
 button, label, select { -webkit-tap-highlight-color: transparent; }
 .shell { max-width: 1440px; margin: auto; padding: 0 6.2vw; }
 .topbar { height: 68px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.topbar-actions { display: flex; align-items: center; gap: 18px; }
+.language-switch { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid var(--line); border-radius: 3px; }
+.language-switch button { border: 0; background: transparent; color: var(--muted); border-radius: 2px; padding: 4px 6px; font-size: 9px; cursor: pointer; }
+.language-switch button[aria-pressed="true"] { background: var(--green-soft); color: var(--green); }
 .wordmark { color: var(--ink); text-decoration: none; font: 600 12px var(--mono); letter-spacing: .08em; }
 .wordmark span { color: var(--green); padding: 0 3px; }
 .privacy { color: var(--muted); font: 10px var(--mono); letter-spacing: .05em; display: flex; gap: 8px; align-items: center; }
@@ -59,8 +63,10 @@ h2 { margin: 0 0 4px; font-size: 14px; font-weight: 500; }
 .button[aria-pressed="true"] { outline: 2px solid rgba(23, 104, 77, .25); outline-offset: 1px; }
 .field-label { display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; margin: 14px 0 6px; }
 .field-label span { font-family: var(--mono); font-size: 9px; }
+.field-label > span:first-child { font-family: var(--sans); font-size: 10px; }
 select, .number-input { width: 100%; min-height: 34px; border: 1px solid #cbd2cb; border-radius: 3px; background: transparent; color: var(--ink); padding: 0 9px; font-size: 11px; }
 .number-input { max-width: 110px; }
+.field-help { margin: 5px 0 0; color: var(--muted); font-size: 9px; line-height: 1.45; }
 .run-button { width: 100%; margin-top: 9px; }
 .divider { border-top: 1px solid var(--line); margin: 19px 0; }
 .control-title.compact { margin-bottom: 12px; }
@@ -78,6 +84,8 @@ footer { display: flex; justify-content: space-between; margin-top: 36px; paddin
 @media (max-width: 680px) {
   .shell { padding: 0 16px; }
   .topbar { height: 58px; }
+  .topbar-actions { gap: 9px; }
+  .privacy { font-size: 8px; }
   .intro { min-height: 0; align-items: flex-start; flex-direction: column; gap: 19px; padding: 31px 0 22px; }
   h1 { font-size: 42px; }
   .intro-side { align-items: flex-start; flex-direction: row; gap: 14px; }
