@@ -1,7 +1,7 @@
 (() => {
   const messages = {
     en: {
-      localProcessing: 'LOCAL PROCESSING', languageLabel: 'Language', workspaceLabel: 'Video motion annotation workspace', videoFrameLabel: 'Video frame with motion traces', homeLabel: 'Motion Trace home', eyebrow: 'VIDEO → TRACK DATA', heroLine1: 'Trace motion.', heroLine2: 'Keep the evidence.',
+      localProcessing: 'LOCAL PROCESSING', languageLabel: 'Language', workspaceLabel: 'Video motion annotation workspace', controlsLabel: 'Tracking and export controls', videoFrameLabel: 'Video frame with motion traces', homeLabel: 'Motion Trace home', eyebrow: 'VIDEO → TRACK DATA', heroLine1: 'Trace motion.', heroLine2: 'Keep the evidence.',
       openVideo: 'Open a video', clearSession: 'Clear session', emptyTitle: 'Open a local video to begin', emptyNote: 'Video stays in this browser session.', noVideo: 'NO VIDEO',
       seedHeading: 'Seed points', seedHelp: 'Pause on a frame, then place one point on each object to follow. A seed is a starting location, not automatic detection.',
       placePoints: '＋ Place points', correctSelected: 'Correct selected', selectedTrack: 'Selected track', noTracks: 'No tracks',
@@ -24,7 +24,7 @@
       videoError: 'This browser could not decode the video. Try H.264 MP4 or WebM; AVI support varies by browser.'
     },
     zh: {
-      localProcessing: '本地处理', languageLabel: '语言', workspaceLabel: '视频运动标注工作区', videoFrameLabel: '带有运动轨迹的视频画面', homeLabel: 'Motion Trace 首页', eyebrow: '视频 → 轨迹数据', heroLine1: '追踪运动。', heroLine2: '保留数据依据。',
+      localProcessing: '本地处理', languageLabel: '语言', workspaceLabel: '视频运动标注工作区', controlsLabel: '追踪与导出控制区', videoFrameLabel: '带有运动轨迹的视频画面', homeLabel: 'Motion Trace 首页', eyebrow: '视频 → 轨迹数据', heroLine1: '追踪运动。', heroLine2: '保留数据依据。',
       openVideo: '打开视频', clearSession: '清除本次数据', emptyTitle: '打开本地视频以开始', emptyNote: '视频仅在当前浏览器会话中处理。', noVideo: '未载入视频',
       seedHeading: '放置起始点', seedHelp: '暂停在目标画面，在每个待跟踪对象上点一下。起始点只表示位置，不会自动检测对象。',
       placePoints: '＋ 放置点', correctSelected: '修正选中轨迹', selectedTrack: '当前轨迹', noTracks: '暂无轨迹',
@@ -116,6 +116,7 @@
     document.querySelector('.wordmark')?.setAttribute('aria-label', t('homeLabel'));
     document.querySelector('.language-switch')?.setAttribute('aria-label', t('languageLabel'));
     document.querySelector('.workspace')?.setAttribute('aria-label', t('workspaceLabel'));
+    document.querySelector('.controls')?.setAttribute('aria-label', t('controlsLabel'));
     canvas?.setAttribute('aria-label', t('videoFrameLabel'));
     if (video.videoWidth) setText('videoMeta', t('videoMeta', { width: video.videoWidth, height: video.videoHeight, duration: video.duration.toFixed(1) }));
     updateSelection();
