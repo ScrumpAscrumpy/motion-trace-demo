@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A local-first video point-tracking demo." />
+    <meta name="theme-color" content="#f4f5f2" />
+    <title>Motion Trace</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="wordmark" href="#top" aria-label="Motion Trace home">MOTION<span>/</span>TRACE</a>
+        <span class="privacy"><i></i> LOCAL PROCESSING</span>
+      </header>
+
+      <section class="intro" id="top">
+        <div>
+          <p class="eyebrow">VIDEO → TRACK DATA</p>
+          <h1>Trace motion.<br /><em>Keep the evidence.</em></h1>
+        </div>
+        <div class="intro-side">
+          <label class="upload-button" for="videoInput">Open a video <span>↗</span></label>
+          <input id="videoInput" type="file" accept="video/*,.mp4,.m4v,.mov,.webm,.avi" />
+          <button id="resetButton" class="text-button" type="button" disabled>Clear session</button>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Video motion annotation workspace">
+        <div class="stage-wrap">
+          <div id="stage" class="stage">
+            <video id="video" controls playsinline preload="metadata" hidden></video>
+            <canvas id="overlay" aria-label="Video frame with motion traces"></canvas>
+            <div id="emptyState" class="empty-state">
+              <div class="empty-mark">+</div>
+              <strong>Open a local video to begin</strong>
+              <span>Video stays in this browser session.</span>
+            </div>
+          </div>
+          <div class="stage-foot">
+            <span id="videoMeta">NO VIDEO</span>
+            <span id="frameMeta">—</span>
+          </div>
+        </div>
+
+        <aside class="controls">
+          <div class="control-title">
+            <span class="step">01</span>
+            <div><h2>Seed points</h2><p>Pause on a frame, then place one point per object.</p></div>
+          </div>
+          <div class="button-row">
+            <button id="seedMode" class="button primary" type="button" aria-pressed="false" disabled>＋ Place points</button>
+            <button id="correctMode" class="button" type="button" aria-pressed="false" disabled>Correct selected</button>
+          </div>
+          <label class="field-label" for="trackSelect">Selected track</label>
+          <select id="trackSelect" disabled><option value="">No tracks</option></select>
+
+          <div class="divider"></div>
+
+          <div class="control-title">
+            <span class="step">02</span>
+            <div><h2>Extend tracks</h2><p>Local patch matching follows each seed through sampled frames.</p></div>
+          </div>
+          <label class="field-label" for="intervalInput">Sample interval <span>seconds</span></label>
+          <input id="intervalInput" class="number-input" type="number" min="0.05" max="5" step="0.05" value="0.25" />
+          <button id="trackButton" class="button run-button" type="button" disabled>Track forward <span>→</span></button>
+
+          <div class="divider"></div>
+
+          <div class="control-title compact">
+            <span class="step">03</span>
+            <div><h2>Export annotations</h2><p id="resultMeta" aria-live="polite">CSV or JSON · no data yet</p></div>
+          </div>
+          <div class="button-row export-row">
+            <button id="csvButton" class="button" type="button" disabled>Download CSV</button>
+            <button id="jsonButton" class="button" type="button" disabled>Download JSON</button>
+          </div>
+
+          <p id="status" class="status" role="status">Choose a browser-supported video format. AVI playback depends on the browser codec; convert to H.264 MP4 or WebM if it will not open.</p>
+          <p class="quality-note">Point tracks are draft annotations. Review and correct them before training; this demo does not create object masks or certify ground truth.</p>
+        </aside>
+      </section>
+
+      <footer><span>MOTION TRACE · BROWSER DEMO</span><span>No account · No upload</span></footer>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
